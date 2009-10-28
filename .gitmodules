@@ -16,3 +16,24 @@
 [submodule "sites/all/modules/cssdry"]
 	path = sites/all/modules/cssdry
 	url = git://github.com/hugowetterberg/cssdry.git
+[submodule "sites/default/modules/services"]
+	path = sites/default/modules/services
+	url = git://github.com/hugowetterberg/services.git
+[submodule "sites/default/modules/oauth_common"]
+	path = sites/default/modules/oauth_common
+	url = git://github.com/hugowetterberg/oauth_common.git
+[submodule "sites/default/modules/services_oauth"]
+	path = sites/default/modules/services_oauth
+	url = git://github.com/hugowetterberg/services_oauth.git
+[submodule "sites/default/modules/query_builder"]
+	path = sites/default/modules/query_builder
+	url = git://github.com/hugowetterberg/query_builder.git
+[submodule "sites/default/modules/rest_server"]
+	path = sites/default/modules/rest_server
+	url = git://github.com/hugowetterberg/rest_server.git
+[submodule "sites/default/modules/inputstream"]
+	path = sites/default/modules/inputstream
+	url = git://github.com/hugowetterberg/inputstream.git
+[submodule "sites/default/modules/services_oop"]
+	path = sites/default/modules/services_oop
+	url = git://github.com/hugowetterberg/services_oop.git
