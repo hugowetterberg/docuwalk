@@ -17,7 +17,7 @@ class DocuWalkPictureResource {
    */
   public static function create($picture) {
     global $user;
-    $attr = array('solution', 'position');
+    $attr = array('title', 'solution', 'position');
     $node = (object)array(
       'type' => 'docuwalk_picture',
       'created' => time(),
@@ -169,12 +169,15 @@ class DocuWalkPictureResource {
       $old_file = (object)$node->field_picture[0];
       file_set_status($old_file, FILE_STATUS_TEMPORARY);
     }
-    
+
+    $dir = file_directory_path() . '/pictures';
+    if (!file_exists($dir)) {
+      mkdir($dir);
+    }
 
     $file->uid = $user->uid;
     $file->status = FILE_STATUS_PERMANENT;
-    $destination = file_destination(file_create_path(
-      file_directory_path() . '/pictures/' . $file->filename));
+    $destination = file_destination(file_create_path($dir . '/' . $file->filename));
     rename($file->filepath, $destination);
     $file->filepath = $destination;
 
