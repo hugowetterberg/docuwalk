@@ -1,0 +1,38 @@
+<?php
+// $Id$
+
+function docuwalk_install() {
+  drupal_install_schema('docuwalk');
+
+  db_query("ALTER TABLE {docuwalk_waypoint}
+    ADD COLUMN position POINT NOT NULL,
+    ADD SPATIAL INDEX position_index(position)");
+}
+
+function docuwalk_schema() {
+  $schema = array();
+
+  $schema['docuwalk_waypoint'] = array(
+    'description' => 'Waypoint for a docuwalk',
+    'fields' => array(
+      'wid' => array(
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => t('Docuwalk solution id'),
+      ),
+      'nid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => t('Docuwalk solution id'),
+      ),
+    ),
+    'primary key' => array('wid'),
+    'index' => array(
+      'node' => array('nid'),
+    ),
+  );
+
+  return $schema;
+}

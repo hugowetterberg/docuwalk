@@ -1,0 +1,7 @@
+name = DocuWalk
+description = Provides the DocuWalk functionality
+dependencies[] = rest_server
+dependencies[] = services_oauth
+dependencies[] = query_builder
+core = 6.x
+php = 5.2

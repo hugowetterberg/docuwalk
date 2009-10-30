@@ -1,0 +1,127 @@
+<?php
+// $Id$
+
+/**
+ * Implementation of hook_autoload_info().
+ */
+function docuwalk_autoload_info() {
+  return array(
+    'DocuWalkTaskResource' => array(
+      'file' => 'includes/DocuWalkTaskResource.php',
+    ),
+    'DocuWalkSolutionResource' => array(
+      'file' => 'includes/DocuWalkSolutionResource.php',
+    ),
+    'DocuWalkTextResource' => array(
+      'file' => 'includes/DocuWalkTextResource.php',
+    ),
+  );
+}
+
+/**
+ * Implementation of hook_service_resource().
+ */
+function docuwalk_service_resource() {
+  $res = array(
+    'docuwalk-task' => ServicesOop::definitionFromClass('DocuWalkTaskResource'),
+    'docuwalk-solution' => ServicesOop::definitionFromClass('DocuWalkSolutionResource'),
+    'docuwalk-text' => ServicesOop::definitionFromClass('DocuWalkTextResource'),
+  );
+  return $res;
+}  
+
+/**
+ * Implementation of hook_oauth_default_contexts().
+ */
+function docuwalk_oauth_default_contexts() {
+  return array(
+    'docuwalk' => array(
+      '*' => array(
+        'title' => 'Login !appname',
+        'description' => 'This will allow !appname to connect to !sitename',
+        'weight' => -1,
+      ),
+    ),
+  );
+}
+
+/**
+ * Implementation of hook_services_contexts().
+ */
+function docuwalk_services_contexts() {
+  return array(
+    'docuwalk' => array(
+      'title' => 'DocuWalk API',
+      'server' => 'rest_server',
+      'path' => 'api',
+      'authentication' => 'services_oauth',
+      'authentication_settings' => array(
+        'oauth_context' => 'docuwalk',
+      ),
+      'resources' => array(
+        'docuwalk-task' => array(
+          'operations' => array(
+            'create' => array(
+              'enabled' => TRUE,
+            ),
+            'retrieve' => array(
+              'enabled' => TRUE,
+            ),
+            'update' => array(
+              'enabled' => TRUE,
+            ),
+            'delete' => array(
+              'enabled' => TRUE,
+            ),
+            'index' => array(
+              'enabled' => TRUE,
+            ),
+          ),
+        ),
+        'docuwalk-solution' => array(
+          'operations' => array(
+            'create' => array(
+              'enabled' => TRUE,
+            ),
+            'retrieve' => array(
+              'enabled' => TRUE,
+            ),
+            'update' => array(
+              'enabled' => TRUE,
+            ),
+            'delete' => array(
+              'enabled' => TRUE,
+            ),
+            'index' => array(
+              'enabled' => TRUE,
+            ),
+          ),
+          'targeted actions' => array(
+            'add-waypoint' => array(
+              'enabled' => TRUE,
+            ),
+          ),
+        ),
+        'docuwalk-text' => array(
+          'operations' => array(
+            'create' => array(
+              'enabled' => TRUE,
+            ),
+            'retrieve' => array(
+              'enabled' => TRUE,
+            ),
+            'update' => array(
+              'enabled' => TRUE,
+            ),
+            'delete' => array(
+              'enabled' => TRUE,
+            ),
+            'index' => array(
+              'enabled' => TRUE,
+            ),
+          ),
+        ),
+      ),
+    ),
+  );
+}
