@@ -1,6 +1,10 @@
 <?php
 // $Id$
 
+function docuwalk_init() {
+  drupal_add_css(drupal_get_path('module', 'docuwalk') . '/docuwalk.css');
+}
+
 /**
  * Implementation of hook_autoload_info().
  */
