@@ -1,0 +1,11 @@
+; $Id$
+
+; The name and description of the theme used on the admin/build/themes page.
+name = Dowuwalk Theme
+description = A theme based on magazeen.
+version = VERSION
+core = 6.x
+engine = phptemplate
+base theme = magazeen
+
+stylesheets[all][] = css/docuwalk.css
